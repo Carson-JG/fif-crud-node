@@ -1,7 +1,9 @@
 const Joi = require("joi");
-const VALID_ID = require("./id.validation");
-const QUERY_OPTIONS = require("./queryOptions.validation");
 
+const QUERY_OPTIONS = require("./queryOptions.validation");
+const VALID_ID = require("./id.validation");
+
+const VALID_ID_REQ = VALID_ID.required();
 const STRING = Joi.string();
 const STRING_REQ = STRING.required();
 const BOOL = Joi.boolean();
@@ -17,7 +19,7 @@ const FIELDS_READ = {
   active: BOOL,
 };
 
-const FIELDS_IDENTIFY = { id: VALID_ID };
+const FIELDS_IDENTIFY = { id: VALID_ID_REQ };
 
 const FIELDS_QUERY = Object.assign(FIELDS_READ, QUERY_OPTIONS);
 

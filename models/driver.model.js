@@ -15,8 +15,8 @@ class Driver {
 
   static validate(driver) {
     const validSchema = {
-      id: VALID_ID,
-      teamId: VALID_ID,
+      id: VALID_ID.required(),
+      teamId: VALID_ID.required(),
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       country: Joi.string().required(),

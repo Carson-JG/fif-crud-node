@@ -16,7 +16,7 @@ class Team {
 
   static validate(team) {
     const validSchema = {
-      id: VALID_ID,
+      id: VALID_ID.required(),
       name: Joi.string().required(),
       country: Joi.string().required(),
       active: Joi.boolean().required(),

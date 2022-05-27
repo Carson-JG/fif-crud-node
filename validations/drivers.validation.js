@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
-const VALID_ID = require("./id.validation");
 const QUERY_OPTIONS = require("./queryOptions.validation");
-const { VALID_ID_LENGTH } = require("../config");
+const VALID_ID = require("./id.validation");
 
+const VALID_ID_REQ = VALID_ID.required();
 const STRING = Joi.string();
 const STRING_REQ = STRING.required();
 const BOOL = Joi.boolean();
@@ -12,18 +12,18 @@ const FIELDS_CREATE = {
   firstName: STRING_REQ,
   lastName: STRING_REQ,
   country: STRING_REQ,
-  teamId: VALID_ID,
+  teamId: VALID_ID_REQ,
 };
 
 const FIELDS_READ = {
   firstName: STRING,
   lastName: STRING,
   country: STRING,
-  teamId: STRING.uppercase().alphanum().length(VALID_ID_LENGTH),
+  teamId: VALID_ID,
   active: BOOL,
 };
 
-const FIELDS_IDENTIFY = { id: VALID_ID };
+const FIELDS_IDENTIFY = { id: VALID_ID_REQ };
 
 const FIELDS_QUERY = Object.assign(FIELDS_READ, QUERY_OPTIONS);
 
